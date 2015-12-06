@@ -9,6 +9,18 @@ namespace Pong
     /// </summary>
     public class PongGame : Game
     {
+        /// <summary>
+        ///     Changes the difficulty of the game
+        ///     -1 Very Hard; 0 Hard; 1 Medium; 2 Easy; 3 Very Easy
+        /// </summary>
+        internal const int Difficulty = 1;
+
+        /// <summary>
+        ///     Changes the game's speed
+        ///     -2 Very Slow; -1 Slow; 0 Normal; 1 Fast; 2 Very Fast; 5 Extreme
+        /// </summary>
+        internal const int Speed = 0;
+
         private Ball _ball;
         private Paddle _computerPaddle;
         private GameObjects _gameObjects;

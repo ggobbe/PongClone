@@ -24,10 +24,11 @@ namespace Pong
         {
             if (_playerType == PlayerTypes.Computer)
             {
-                if (gameObjects.Ball.Location.Y < Location.Y)
+                var reactionThreshold = PongGame.Difficulty*gameObjects.Ball.Height;
+                if (gameObjects.Ball.Location.Y < Location.Y - reactionThreshold)
                     Velocity = new Vector2(0, -BaseVelocity);
 
-                if (gameObjects.Ball.Location.Y + gameObjects.Ball.Height > Location.Y + Height)
+                if (gameObjects.Ball.Location.Y + gameObjects.Ball.Height > Location.Y + Height + reactionThreshold)
                     Velocity = new Vector2(0, BaseVelocity);
             }
 

@@ -5,7 +5,7 @@ namespace Pong
 {
     internal abstract class Sprite
     {
-        protected const float BaseVelocity = 5f;
+        protected const float BaseVelocity = 5f + PongGame.Speed;
 
         protected readonly Rectangle GameBoundaries;
         protected readonly Texture2D Texture;

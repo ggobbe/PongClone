@@ -45,6 +45,11 @@ namespace Pong
                     var random = new Random();
                     Velocity = new Vector2(-Velocity.X*(1f + random.Next(5)/100f), Velocity.Y*(1f + random.Next(5)/100f));
                 }
+                while (BoundingBox.Intersects(gameObjects.PlayerPaddle.BoundingBox) ||
+                       BoundingBox.Intersects(gameObjects.ComputerPaddle.BoundingBox))
+                {
+                    base.Update(gameTime, gameObjects);
+                }
             }
 
             base.Update(gameTime, gameObjects);
