@@ -28,11 +28,11 @@ namespace Pong
             }
         }
 
-        public override void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime, GameObjects gameObjects)
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Space) && _attachedToPaddle != null)
             {
-                var newVelocity = new Vector2(5, _attachedToPaddle.Velocity.Y);
+                var newVelocity = new Vector2(5, _attachedToPaddle.Velocity.Y*.65f);
                 Velocity = newVelocity;
                 _attachedToPaddle = null;
             }
@@ -43,7 +43,7 @@ namespace Pong
                 Location.Y = _attachedToPaddle.Location.Y;
             }
 
-            base.Update(gameTime);
+            base.Update(gameTime, gameObjects);
         }
 
         public void AttachTo(Paddle paddle)

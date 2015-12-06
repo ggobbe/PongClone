@@ -20,10 +20,15 @@ namespace Pong
             _playerType = playerType;
         }
 
-        public override void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime, GameObjects gameObjects)
         {
             if (_playerType == PlayerTypes.Computer)
             {
+                if (gameObjects.Ball.Location.Y + gameObjects.Ball.Height < Location.Y)
+                    Velocity = new Vector2(0, -5);
+
+                if (gameObjects.Ball.Location.Y > Location.Y + Height)
+                    Velocity = new Vector2(0, 5);
             }
 
             if (_playerType == PlayerTypes.Human)
@@ -35,7 +40,7 @@ namespace Pong
                     Velocity = new Vector2(0, 5);
             }
 
-            base.Update(gameTime);
+            base.Update(gameTime, gameObjects);
         }
 
         protected override void CheckBounds()

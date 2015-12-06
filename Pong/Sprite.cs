@@ -27,7 +27,7 @@ namespace Pong
             spriteBatch.Draw(Texture, Location, Color.White);
         }
 
-        public virtual void Update(GameTime gameTime)
+        public virtual void Update(GameTime gameTime, GameObjects gameObjects)
         {
             Location += Velocity;
 

@@ -11,6 +11,7 @@ namespace Pong
     {
         private Ball _ball;
         private Paddle _computerPaddle;
+        private GameObjects _gameObjects;
         private GraphicsDeviceManager _graphics;
         private Paddle _playerPaddle;
         private SpriteBatch _spriteBatch;
@@ -53,6 +54,13 @@ namespace Pong
 
             _ball = new Ball(Content.Load<Texture2D>("ball"), Vector2.Zero, gameBoundaries);
             _ball.AttachTo(_playerPaddle);
+
+            _gameObjects = new GameObjects
+            {
+                PlayerPaddle = _playerPaddle,
+                ComputerPaddle = _computerPaddle,
+                Ball = _ball
+            };
         }
 
         /// <summary>
@@ -75,9 +83,9 @@ namespace Pong
                 Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            _playerPaddle.Update(gameTime);
-            _computerPaddle.Update(gameTime);
-            _ball.Update(gameTime);
+            _playerPaddle.Update(gameTime, _gameObjects);
+            _computerPaddle.Update(gameTime, _gameObjects);
+            _ball.Update(gameTime, _gameObjects);
 
             base.Update(gameTime);
         }
