@@ -32,7 +32,7 @@ namespace Pong
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Space) && _attachedToPaddle != null)
             {
-                var newVelocity = new Vector2(5, _attachedToPaddle.Velocity.Y*.65f);
+                var newVelocity = new Vector2(5, _attachedToPaddle.Velocity.Y*.75f);
                 Velocity = newVelocity;
                 _attachedToPaddle = null;
             }

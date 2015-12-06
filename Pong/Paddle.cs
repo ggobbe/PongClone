@@ -24,10 +24,10 @@ namespace Pong
         {
             if (_playerType == PlayerTypes.Computer)
             {
-                if (gameObjects.Ball.Location.Y + gameObjects.Ball.Height < Location.Y)
+                if (gameObjects.Ball.Location.Y < Location.Y)
                     Velocity = new Vector2(0, -5);
 
-                if (gameObjects.Ball.Location.Y > Location.Y + Height)
+                if (gameObjects.Ball.Location.Y + gameObjects.Ball.Height > Location.Y + Height)
                     Velocity = new Vector2(0, 5);
             }
 
