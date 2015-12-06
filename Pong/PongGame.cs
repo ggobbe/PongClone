@@ -14,6 +14,7 @@ namespace Pong
         private GameObjects _gameObjects;
         private GraphicsDeviceManager _graphics;
         private Paddle _playerPaddle;
+        private Score _score;
         private SpriteBatch _spriteBatch;
 
         public PongGame()
@@ -55,11 +56,14 @@ namespace Pong
             _ball = new Ball(Content.Load<Texture2D>("ball"), Vector2.Zero, gameBoundaries);
             _ball.AttachTo(_playerPaddle);
 
+            _score = new Score(Content.Load<SpriteFont>("fonts/OpenSans"), gameBoundaries);
+
             _gameObjects = new GameObjects
             {
                 PlayerPaddle = _playerPaddle,
                 ComputerPaddle = _computerPaddle,
-                Ball = _ball
+                Ball = _ball,
+                Score = _score
             };
         }
 
@@ -101,6 +105,7 @@ namespace Pong
             _spriteBatch.Begin();
             _playerPaddle.Draw(_spriteBatch);
             _computerPaddle.Draw(_spriteBatch);
+            _score.Draw(_spriteBatch);
             _ball.Draw(_spriteBatch);
             _spriteBatch.End();
 
