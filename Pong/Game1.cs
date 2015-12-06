@@ -10,8 +10,9 @@ namespace Pong
     public class Game1 : Game
     {
         private Ball _ball;
+        private Paddle _computerPaddle;
         private GraphicsDeviceManager _graphics;
-        private Paddle _paddle;
+        private Paddle _playerPaddle;
         private SpriteBatch _spriteBatch;
 
         public Game1()
@@ -43,9 +44,15 @@ namespace Pong
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             var gameBoundaries = new Rectangle(0, 0, Window.ClientBounds.Width, Window.ClientBounds.Height);
-            _paddle = new Paddle(Content.Load<Texture2D>("paddle"), Vector2.Zero, gameBoundaries);
+            var paddleTexture = Content.Load<Texture2D>("paddle");
+
+            _playerPaddle = new Paddle(paddleTexture, Vector2.Zero, gameBoundaries);
+
+            var computerPaddleLocation = new Vector2(gameBoundaries.Width - paddleTexture.Width, 0);
+            _computerPaddle = new Paddle(paddleTexture, computerPaddleLocation, gameBoundaries);
+
             _ball = new Ball(Content.Load<Texture2D>("ball"), Vector2.Zero, gameBoundaries);
-            _ball.AttachTo(_paddle);
+            _ball.AttachTo(_playerPaddle);
         }
 
         /// <summary>
@@ -68,7 +75,8 @@ namespace Pong
                 Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            _paddle.Update(gameTime);
+            _playerPaddle.Update(gameTime);
+            _computerPaddle.Update(gameTime);
             _ball.Update(gameTime);
 
             base.Update(gameTime);
@@ -83,7 +91,8 @@ namespace Pong
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             _spriteBatch.Begin();
-            _paddle.Draw(_spriteBatch);
+            _playerPaddle.Draw(_spriteBatch);
+            _computerPaddle.Draw(_spriteBatch);
             _ball.Draw(_spriteBatch);
             _spriteBatch.End();
 
