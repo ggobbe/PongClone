@@ -46,10 +46,10 @@ namespace Pong
             var gameBoundaries = new Rectangle(0, 0, Window.ClientBounds.Width, Window.ClientBounds.Height);
             var paddleTexture = Content.Load<Texture2D>("paddle");
 
-            _playerPaddle = new Paddle(paddleTexture, Vector2.Zero, gameBoundaries);
+            _playerPaddle = new Paddle(paddleTexture, Vector2.Zero, gameBoundaries, PlayerTypes.Human);
 
             var computerPaddleLocation = new Vector2(gameBoundaries.Width - paddleTexture.Width, 0);
-            _computerPaddle = new Paddle(paddleTexture, computerPaddleLocation, gameBoundaries);
+            _computerPaddle = new Paddle(paddleTexture, computerPaddleLocation, gameBoundaries, PlayerTypes.Computer);
 
             _ball = new Ball(Content.Load<Texture2D>("ball"), Vector2.Zero, gameBoundaries);
             _ball.AttachTo(_playerPaddle);

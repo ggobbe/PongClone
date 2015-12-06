@@ -4,20 +4,36 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Pong
 {
+    internal enum PlayerTypes
+    {
+        Human,
+        Computer
+    }
+
     internal class Paddle : Sprite
     {
-        public Paddle(Texture2D texture, Vector2 location, Rectangle gameBoundaries)
+        private readonly PlayerTypes _playerType;
+
+        public Paddle(Texture2D texture, Vector2 location, Rectangle gameBoundaries, PlayerTypes playerType)
             : base(texture, location, gameBoundaries)
         {
+            _playerType = playerType;
         }
 
         public override void Update(GameTime gameTime)
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.Up))
-                Velocity = new Vector2(0, -5);
+            if (_playerType == PlayerTypes.Computer)
+            {
+            }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Down))
-                Velocity = new Vector2(0, 5);
+            if (_playerType == PlayerTypes.Human)
+            {
+                if (Keyboard.GetState().IsKeyDown(Keys.Up))
+                    Velocity = new Vector2(0, -5);
+
+                if (Keyboard.GetState().IsKeyDown(Keys.Down))
+                    Velocity = new Vector2(0, 5);
+            }
 
             base.Update(gameTime);
         }
