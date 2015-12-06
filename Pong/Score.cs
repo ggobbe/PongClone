@@ -27,5 +27,20 @@ namespace Pong
 
             spriteBatch.DrawString(_font, scoreText, position, Color.White);
         }
+
+        public void Update(GameTime gameTime, GameObjects gameObjects)
+        {
+            if (gameObjects.Ball.Location.X + gameObjects.Ball.Width < 0)
+            {
+                ComputerScore++;
+                gameObjects.Ball.AttachTo(gameObjects.PlayerPaddle);
+            }
+
+            if (gameObjects.Ball.Location.X > _gameBoundaries.Width)
+            {
+                PlayerScore++;
+                gameObjects.Ball.AttachTo(gameObjects.PlayerPaddle);
+            }
+        }
     }
 }

@@ -52,6 +52,7 @@ namespace Pong
 
         public void AttachTo(Paddle paddle)
         {
+            Velocity = Vector2.Zero;
             _attachedToPaddle = paddle;
         }
     }

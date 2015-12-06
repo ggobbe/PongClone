@@ -90,6 +90,7 @@ namespace Pong
             _playerPaddle.Update(gameTime, _gameObjects);
             _computerPaddle.Update(gameTime, _gameObjects);
             _ball.Update(gameTime, _gameObjects);
+            _score.Update(gameTime, _gameObjects);
 
             base.Update(gameTime);
         }
