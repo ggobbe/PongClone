@@ -25,19 +25,19 @@ namespace Pong
             if (_playerType == PlayerTypes.Computer)
             {
                 if (gameObjects.Ball.Location.Y < Location.Y)
-                    Velocity = new Vector2(0, -5);
+                    Velocity = new Vector2(0, -BaseVelocity);
 
                 if (gameObjects.Ball.Location.Y + gameObjects.Ball.Height > Location.Y + Height)
-                    Velocity = new Vector2(0, 5);
+                    Velocity = new Vector2(0, BaseVelocity);
             }
 
             if (_playerType == PlayerTypes.Human)
             {
                 if (Keyboard.GetState().IsKeyDown(Keys.Up))
-                    Velocity = new Vector2(0, -5);
+                    Velocity = new Vector2(0, -BaseVelocity);
 
                 if (Keyboard.GetState().IsKeyDown(Keys.Down))
-                    Velocity = new Vector2(0, 5);
+                    Velocity = new Vector2(0, BaseVelocity);
             }
 
             base.Update(gameTime, gameObjects);

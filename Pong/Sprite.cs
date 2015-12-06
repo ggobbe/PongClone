@@ -5,6 +5,8 @@ namespace Pong
 {
     internal abstract class Sprite
     {
+        protected const float BaseVelocity = 5f;
+
         protected readonly Rectangle GameBoundaries;
         protected readonly Texture2D Texture;
         public Vector2 Location;
@@ -21,6 +23,8 @@ namespace Pong
 
         public int Width => Texture.Width;
         public int Height => Texture.Height;
+
+        public Rectangle BoundingBox => new Rectangle((int) Location.X, (int) Location.Y, Width, Height);
 
         public void Draw(SpriteBatch spriteBatch)
         {
