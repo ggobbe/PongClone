@@ -7,7 +7,7 @@ namespace Pong
     /// <summary>
     ///     This is the main type for your game.
     /// </summary>
-    public class Game1 : Game
+    public class PongGame : Game
     {
         private Ball _ball;
         private Paddle _computerPaddle;
@@ -15,7 +15,7 @@ namespace Pong
         private Paddle _playerPaddle;
         private SpriteBatch _spriteBatch;
 
-        public Game1()
+        public PongGame()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
